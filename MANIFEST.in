@@ -1,0 +1,4 @@
+include DESCRIPTION.rst
+
+include conf/*.conf
+
