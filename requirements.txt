@@ -1,0 +1,4 @@
+# install all requirements with:
+# pip install -r requirements.txt
+bottle>=0.12.18
+pyqt5>=5.12.2
