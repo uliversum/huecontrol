@@ -77,7 +77,9 @@ setup(
     # format of entrypoint: 'console_command_name = mynamespace.mypackage.mymodule:the_function'
     entry_points={
         'console_scripts': [
+            'hue_cli=huecontrol.hue_cli:main',
             'hue_gui=huecontrol.hue_gui:main',
+            'hue_web=huecontrol.hue_web:main',      
         ],
     },
 

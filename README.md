@@ -6,7 +6,7 @@ install with command: pip install -r requirements.txt
 * pip3
 
 ## installation instructions
-* install with source code editing: pip install -e . --user USERNAME
+* install with source code editing: pip install -e .
 * install just for usage: pip install python-opcua
 * set the IP address of your bridge in $HOME/.huecontrol/huecontrol.conf
 * press the button on your bridge.
