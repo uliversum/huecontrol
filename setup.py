@@ -11,6 +11,14 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
+
+def get_requirements():
+    required = []
+    with open('requirements.txt') as f:
+        required = f.read().splitlines()
+    return required
+
+
 setup(
     name='huecontrol',
 
@@ -57,7 +65,7 @@ setup(
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['pyqt5', 'phue'],
+    install_requires=get_requirements(), #['bottle', 'pyqt5', 'phue'],
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
@@ -68,7 +76,7 @@ setup(
         'test': ['coverage'],
     },
 
-    data_files=[('images', ['images/icons8-light-on-96.png'])],
+    data_files=[('images', ['images/icons8-light-on-96.png'], 'config/huecontrol.conf')],
 
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow
