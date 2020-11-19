@@ -9,6 +9,7 @@ https://github.com/pypa/sampleproject
 from setuptools import setup, find_packages
 # To use a consistent encoding
 from codecs import open
+import os
 from os import path
 
 
@@ -25,7 +26,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='1.1.3',
+    version='1.1.4',
 
     description='A cli, gui and web interface for controlling phillips hue.',
     long_description_markdown_filename='README.md',
@@ -76,7 +77,8 @@ setup(
         'test': ['coverage'],
     },
 
-    data_files=[('images', ['images/icons8-light-on-96.png'], 'config/huecontrol.conf')],
+    data_files=[('images', ['images/icons8-light-on-96.png']),
+        ],
 
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow

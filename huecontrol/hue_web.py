@@ -12,33 +12,21 @@ hueControl = None
 
 @route('/lighton')
 def light_on():
-    config = configparser.ConfigParser()
-    config.read(os.path.expanduser('~/.huecontrol/huecontrol.conf'))
-
-    ipAddressBridge = config['DEFAULT']['IpAddressBridge']
-    hueControl = hue.HueControl(ipAddressBridge)
+    hueControl = hue.HueControl()
     hueControl.on()
     return 'light on!'
 
 
 @route('/lightoff')
 def light_off():
-    config = configparser.ConfigParser()
-    config.read(os.path.expanduser('~/.huecontrol/huecontrol.conf'))
-
-    ipAddressBridge = config['DEFAULT']['IpAddressBridge']
-    hueControl = hue.HueControl(ipAddressBridge)
+    hueControl = hue.HueControl()
     hueControl.off()
     return 'light off!'
 
 
 @route('/lightrandom')
 def light_random():
-    config = configparser.ConfigParser()
-    config.read(os.path.expanduser('~/.huecontrol/huecontrol.conf'))
-
-    ipAddressBridge = config['DEFAULT']['IpAddressBridge']
-    hueControl = hue.HueControl(ipAddressBridge)
+    hueControl = hue.HueControl()
     hueControl.do_random()
     return 'light random!'
 

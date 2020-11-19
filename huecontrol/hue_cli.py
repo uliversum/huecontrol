@@ -108,11 +108,7 @@ def main(args=sys.argv):
     logging.basicConfig(level=logging.DEBUG, format=FORMAT, handlers=[color_handler, file_handler])
     log = logging.getLogger(__name__)
 
-    config = configparser.ConfigParser()
-    config.read(os.sep.join([os.getenv('HOME'), '.huecontrol' + os.sep + 'huecontrol.conf']))
-
-    ipAddressBridge = config['DEFAULT']['IpAddressBridge']
-    hueControl = hue.HueControl(ipAddressBridge)
+    hueControl = hue.HueControl()
     return_code = HueCmd(hueControl).cmdloop()
 
     logging.shutdown()

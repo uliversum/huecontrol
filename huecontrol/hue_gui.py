@@ -117,25 +117,7 @@ def main(args=sys.argv):
 
     trayIcon = QSystemTrayIcon(QIcon(':/icons8-light-on-96.png'), app)
 
-    config = configparser.ConfigParser()
-    HUECONTROL_CONF = os.sep.join([os.getenv('HOME'), '.huecontrol', 'huecontrol.conf'])
-
-    if not os.path.isfile(HUECONTROL_CONF):
-        try:
-            os.makedirs(os.path.dirname(HUECONTROL_CONF))
-        except OSError as exc: # guard against race condition when directory is created between calls
-            if exc.errno != errno.EEXIST:
-                raise
-
-        with open(HUECONTROL_CONF, 'w+') as config_file:
-            config_file.write("""
-[DEFAULT]
-# Please fill in the ip address of your phillip hue bridge.
-IpAddressBridge = 192.168.0.5
-""")
-    config.read(os.path.expanduser(HUECONTROL_CONF))
-    ipAddressBridge = config['DEFAULT']['IpAddressBridge']
-    hueControl = hue.HueControl(ipAddressBridge)
+    hueControl = hue.HueControl()
     systray = SystrayApp(hueControl)
 
     menu = QMenu()

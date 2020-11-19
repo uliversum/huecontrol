@@ -5,11 +5,25 @@ try:
     import huecontrol.rgb_cie as rgb_cie
 except:
     import rgb_cie
+import subprocess
+import platform
+
+
+class BridgeNotFound(Exception):
+    pass
+
+
+def detect_bridge():
+    ip = str(subprocess.check_output("arp -na | grep 'at 0:17:88' | awk '{print $2}' | sed 's/[()]//g'", shell=True).decode('utf-8'))
+    ip = ip.rstrip()
+    if ip == '': raise BridgeNotFound
+    return ip
 
 
 class HueControl():
-    def __init__(self, ip):
+    def __init__(self):
         self.log = logging.getLogger(self.__class__.__name__)
+        ip = detect_bridge()
         self.log.info('Using ip address: ' + ip)
         self.bridge = phue.Bridge(ip)
         self.bridge.connect()
