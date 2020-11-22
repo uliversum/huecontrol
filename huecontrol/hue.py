@@ -14,7 +14,10 @@ class BridgeNotFound(Exception):
 
 
 def detect_bridge():
-    ip = str(subprocess.check_output("arp -na | grep 'at 0:17:88' | awk '{print $2}' | sed 's/[()]//g'", shell=True).decode('utf-8'))
+    ip = str(
+        subprocess.check_output(
+            "arp -na | grep '0:17:88' | awk '{print $2}' | sed 's/[()]//g'",
+            shell=True).decode('utf-8'))
     ip = ip.rstrip()
     if ip == '': raise BridgeNotFound
     return ip
@@ -40,7 +43,8 @@ class HueControl():
             bulb.xy = [random.random(), random.random()]
 
     def color_rgb(self, red, green, blue):
-        self.log.info('red: ' + str(red) + ' green: ' + str(green) + ' blue: ' + str(blue))
+        self.log.info('red: ' + str(red) + ' green: ' + str(green) +
+                      ' blue: ' + str(blue))
         self.on()
         xy = self.color_helper.getXYPointFromRGB(red, green, blue)
         color_xy = (xy.x, xy.y)
