@@ -1,14 +1,10 @@
 # A cli, gui and web interface for controlling phillips hue
 
-## requirements
-install with command: pip install -r requirements.txt
-* python3
-* pip3
-
 ## installation instructions
-* install with source code editing: pip install -e .
-* install just for usage: pip install python-opcua
+* git clone REPO
+* install "arp" for auto detection of hue bridge, e.g. sudo apt install net-tools
+* python3 setup.py install --user
 * press the button on your bridge.
-
+* run hue_web, hue_cli, or hue_gui
 # TODO
 * TODO windows compatibility
