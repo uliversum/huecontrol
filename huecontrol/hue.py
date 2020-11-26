@@ -16,7 +16,7 @@ class BridgeNotFound(Exception):
 def detect_bridge():
     ip = str(
         subprocess.check_output(
-            "arp -na | grep '0:17:88' | awk '{print $2}' | sed 's/[()]//g'",
+            "ip n show|grep '0:17:88'|awk '{print $1}'|sed 's/[()]//g'",
             shell=True).decode('utf-8'))
     ip = ip.rstrip()
     if ip == '': raise BridgeNotFound

@@ -31,9 +31,9 @@ def light_random():
 
 def main(args=sys.argv):
     parser = argparse.ArgumentParser()
-    parser.add_argument("port",
-                        type=int,
+    parser.add_argument("--port",
                         default=8080,
+                        type=int,
                         help="port of web interface")
     args = parser.parse_args()
     run(host='0.0.0.0', port=args.port, debug=True)
